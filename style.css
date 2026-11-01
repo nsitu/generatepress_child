@@ -1,0 +1,138 @@
+/*
+ Theme Name:   GeneratePress Child
+ Theme URI:    https://generatepress.com
+ Description:  Default GeneratePress child theme
+ Author:       Tom Usborne
+ Author URI:   https://tomusborne.com
+ Template:     generatepress
+ Version:      0.1
+*/
+
+/* Hides the reCAPTCHA on every page */
+.grecaptcha-badge {
+    display: none !important;
+}
+
+/* Shows the reCAPTCHA on the Contact page */
+.page-id-64 .grecaptcha-badge {
+    display: block !important;
+}
+
+.main-navigation .main-nav ul ul li a{
+  padding: 5px 20px !important;
+}
+
+:focus {
+    outline: 0 !important;
+}
+
+.navigator { margin: 0 0 54px 10px; border: 0px;}
+
+/* fix for woocommerce shopping cart remove button. */
+.woocommerce a.remove {
+    line-height: .8;
+}
+
+div.woocommerce-message a.wc-forward{
+  padding: 5px 15px !important;
+  margin: -5px !important;
+  background-color: rgba(0,0,0,.3) !important;
+}
+/* Override the WooCommerce Styles*/
+
+.woocommerce div.product .woocommerce-tabs ul.tabs li a:hover, .woocommerce div.product .woocommerce-tabs ul.tabs li.active a {
+    color: #ff6600 !important;
+}
+
+.woocommerce #content input.button.alt:hover,
+.woocommerce #respond input#submit.alt:hover,
+.woocommerce a.button.alt:hover,
+.woocommerce button.button.alt:hover,
+.woocommerce input.button.alt:hover,
+.woocommerce-page #content input.button.alt:hover,
+.woocommerce-page #respond input#submit.alt:hover,
+.woocommerce-page a.button.alt:hover,
+.woocommerce-page button.button.alt:hover,
+.woocommerce-page input.button.alt:hover {
+  background:#ff6600 !important;
+  background-color:#ff6600 !important;
+  color:white !important;
+  text-shadow: transparent !important;
+  box-shadow: none;
+  border-color:#d65d0c !important;
+}
+
+.woocommerce #content input.button:hover,
+.woocommerce #respond input#submit:hover,
+.woocommerce a.button:hover,
+.woocommerce button.button:hover,
+.woocommerce input.button:hover,
+.woocommerce-page #content input.button:hover,
+.woocommerce-page #respond input#submit:hover,
+.woocommerce-page a.button:hover,
+.woocommerce-page button.button:hover,
+.woocommerce-page input.button:hover {
+  background:#ff6600 !important;
+  background-color:#ff6600 !important;
+  color:white !important;
+  text-shadow: transparent !important;
+  box-shadow: none;
+  border-color:#d65d0c !important;
+}
+
+.woocommerce #content input.button,
+.woocommerce #respond input#submit,
+.woocommerce a.button, .woocommerce button.button,
+.woocommerce input.button,
+.woocommerce-page #content input.button,
+.woocommerce-page #respond input#submit,
+.woocommerce-page a.button,
+.woocommerce-page button.button,
+.woocommerce-page input.button {
+  background: #ff6600 !important;
+  color:white !important;
+  text-shadow: transparent !important;
+  border-color:#d65d0c !important;
+}
+
+.woocommerce #content input.button.alt:hover,
+.woocommerce #respond input#submit.alt:hover,
+.woocommerce a.button.alt:hover,
+.woocommerce button.button.alt:hover,
+.woocommerce input.button.alt:hover,
+.woocommerce-page #content input.button.alt:hover,
+.woocommerce-page #respond input#submit.alt:hover,
+.woocommerce-page a.button.alt:hover,
+.woocommerce-page button.button.alt:hover,
+.woocommerce-page input.button.alt:hover {
+  background: #ff6600 !important;
+  box-shadow: none;
+  text-shadow: transparent !important;
+  color:white !important;
+  border-color:#d65d0c !important;
+}
+
+/* compensate for the padding on the grid container.*/
+.entry-content .grid-container{
+  margin: 0px -20px;
+}
+
+
+.rotateImageContainer{
+  height: 800px;
+  width: 800px;
+}
+.rotateImage {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    width: 70%;
+    height: 70%;
+    margin:-60px 0 0 -60px;
+    -webkit-animation:spin 4s linear infinite;
+    -moz-animation:spin 4s linear infinite;
+    animation:spin 4s linear infinite;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
