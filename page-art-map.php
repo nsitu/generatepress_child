@@ -9,15 +9,16 @@ if (! defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
 
-$apiKeyGMapsJS = 'AIzaSyDJz6uIoQcRLhAHfP4AtWqro_yRzjXq_1E';
-//$apiKeyGMapsJS = 'AIzaSyD8WktmgfFoYt3619DVdiYFb_FICSXvYp8';
-wp_enqueue_script(
-	'google_js',
-	'https://maps.googleapis.com/maps/api/js?' .
-		'v=3.exp&' .
-		'sensor=false&' .
-		'key=' . $apiKeyGMapsJS
-);
+$apiKeyGMapsJS = get_option('nsitu_google_maps_api_key', '');
+if ($apiKeyGMapsJS !== '') {
+	wp_enqueue_script(
+		'google_js',
+		'https://maps.googleapis.com/maps/api/js?' .
+			'v=3.exp&' .
+			'sensor=false&' .
+			'key=' . rawurlencode($apiKeyGMapsJS)
+	);
+}
 
 get_header(); ?>
 
@@ -33,7 +34,11 @@ get_header(); ?>
 
 		while (have_posts()) : the_post();
 
-			get_template_part('content', 'art-map');
+			if ($apiKeyGMapsJS !== '') {
+				get_template_part('content', 'art-map');
+			} else {
+				echo '<p>Map unavailable.</p>';
+			}
 
 			// If comments are open or we have at least one comment, load up the comment template.
 			if (comments_open() || 0 != get_comments_number()) : ?>

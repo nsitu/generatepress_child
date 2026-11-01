@@ -59,7 +59,7 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
     id: 'mapbox.streets',
-    accessToken: <?php echo wp_json_encode(defined('NSITU_MAPBOX_PUBLIC_TOKEN') ? NSITU_MAPBOX_PUBLIC_TOKEN : ''); ?>
+    accessToken: <?php echo wp_json_encode(get_option('nsitu_mapbox_public_token', ''), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>
 }).addTo(mymap);
 
         </script>

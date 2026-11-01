@@ -748,26 +748,16 @@ if (! defined('ABSPATH')) {
 			if (!is_numeric($theZoom)) {
 				$theZoom = 13;
 			}
-			if (is_numeric($theLat) && is_numeric($theLong)) {
+			$apiKeyGMapsJS = get_option('nsitu_google_maps_api_key', '');
+			if ($apiKeyGMapsJS !== '' && is_numeric($theLat) && is_numeric($theLong)) {
 
 
-				$apiKeyGMapsJS = 'AIzaSyDJz6uIoQcRLhAHfP4AtWqro_yRzjXq_1E';
-				// 				$apiKeyGMapsJS = 'AIzaSyBU9q7pWdtt2BI_pqCneITUGUNOKhvUa3A';
-				// 'AIzaSyDJz6uIoQcRLhAHfP4AtWqro_yRzjXq_1E';
-				// AIzaSyBU9q7pWdtt2BI_pqCneITUGUNOKhvUa3A
-				// AIzaSyBu1SF1v6Fk4-NLIR_mYdoNMe97KQr4VXY
-				//$apiKeyGMapsJS = 'AIzaSyD8WktmgfFoYt3619DVdiYFb_FICSXvYp8';
-				// wp_enqueue_script( 'google_js',
-				//   'https://maps.googleapis.com/maps/api/js?'.
-				// 	'v=3.exp&'.
-				// 	'sensor=false&'.
-				// 	'key='.$apiKeyGMapsJS );
-
-
-				$theUrl =
-					'https://www.google.com/maps/embed/v1/place' .
-					'?key=' . $apiKeyGMapsJS .
-					'&q=' . $theLat . ',' . $theLong . '&zoom=' . $theZoom . '&maptype=satellite';
+				$theUrl = add_query_arg(array(
+					'key' => $apiKeyGMapsJS,
+					'q' => $theLat . ',' . $theLong,
+					'zoom' => $theZoom,
+					'maptype' => 'satellite',
+				), 'https://www.google.com/maps/embed/v1/place');
 				$thePlace = get_field('place_name');
 				if ($thePlace != '') {
 					echo '<h3>' .
@@ -780,7 +770,7 @@ if (! defined('ABSPATH')) {
             style="width: 100%;"
             height="450"
             frameborder="0" style="border:0"
-            src="' . $theUrl . '" allowfullscreen>
+            src="' . esc_url($theUrl) . '" allowfullscreen>
           </iframe>';
 				echo '<h3>' .
 					'<i style="color:#ff6600;" class="fas fa-map"></i> ' .
