@@ -7,7 +7,7 @@ from zipfile import ZIP_DEFLATED, ZipFile
 def main() -> None:
     root = Path(__file__).resolve().parents[1]
     slug = "generatepress_child"
-    required = ("style.css", "functions.php", "inc/mapbox-settings.php", "inc/google-maps-settings.php")
+    required = ("style.css", "functions.php", "inc/mapbox-settings.php", "inc/google-maps-settings.php", "inc/post-types.php")
     for name in required:
         if not (root / name).is_file():
             raise SystemExit(f"Required theme file is missing: {name}")

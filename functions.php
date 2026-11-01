@@ -2,6 +2,7 @@
 
 require_once get_stylesheet_directory() . '/inc/mapbox-settings.php';
 require_once get_stylesheet_directory() . '/inc/google-maps-settings.php';
+require_once get_stylesheet_directory() . '/inc/post-types.php';
 
 /**
  * Disable WooCommerce block styles (front-end). to avoid renderblocking bloat. 

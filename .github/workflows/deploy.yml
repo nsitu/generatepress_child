@@ -52,7 +52,7 @@ jobs:
         run: python3 scripts/build.py
       - name: Fetch verified WP-CLI
         run: bash scripts/fetch-wp-cli.sh
-      - name: Check settings in disposable WordPress
+      - name: Check settings and content types in disposable WordPress
         env:
           NSITU_TEST_SITE: '1'
         run: |
@@ -61,6 +61,7 @@ jobs:
           php dist/wp-cli.phar config create --path="$WP_TEST_PATH" --dbname=theme_test --dbuser=root --dbpass=local-theme-test --dbhost=127.0.0.1:3306
           php dist/wp-cli.phar core install --path="$WP_TEST_PATH" --url=http://localhost --title='Theme test' --admin_user=theme-admin --admin_password=local-test-only --admin_email=test@example.org --skip-email
           php dist/wp-cli.phar --path="$WP_TEST_PATH" --skip-plugins --skip-themes eval-file tests/map-settings.php "$GITHUB_WORKSPACE"
+          php dist/wp-cli.phar --path="$WP_TEST_PATH" --skip-plugins --skip-themes eval-file tests/post-types.php "$GITHUB_WORKSPACE"
 
   deploy:
     needs: validate

@@ -7,7 +7,20 @@ with embedded map credentials replaced by configuration.
 ## Requirements
 
 - WordPress with the GeneratePress parent theme installed in `wp-content/themes/generatepress`.
-- The site's existing plugins and configuration for its custom post types, custom fields, and commerce features.
+- The site's existing plugins and configuration for custom fields and commerce features.
+
+## Content types
+
+The theme registers `artwork`, `price`, `format`, `exhibition`, `collection`, and
+`book` in `inc/post-types.php`, preserving the supplied CPT UI export's settings.
+Existing content uses the same post type slugs and IDs. The collection archive
+remains `/collections/`; books retain REST API support and custom fields.
+
+CPT UI can remain active during deployment: a compatibility filter tells it to
+skip these six registrations while the theme provides them. It can then be
+removed; see [CPT UI cleanup](docs/cptui-migration.md). The registrations depend
+on this child theme being active. ACF field definitions and WooCommerce/Sprout
+Invoices integrations remain separate from post type registration.
 
 ## Theme structure
 
@@ -71,5 +84,6 @@ deployment scripts are excluded. The theme has no package installation or asset
 build step beyond this ZIP packaging.
 
 CI checks PHP 8.2 syntax, JavaScript syntax, Bash/ShellCheck, deployment preflight
-scenarios, and database-backed map settings in disposable WordPress. It does not
+scenarios, database-backed map settings, and CPT UI registration parity/content
+handoff in disposable WordPress. It does not
 activate the full theme against a replica of the production site's plugins/data.

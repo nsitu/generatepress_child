@@ -217,7 +217,9 @@ completion or failure. Abrupt runner termination can leave code archives under
 `/tmp/generatepress_child-deploy.*` on the host/container.
 
 After the first deploy, enter the map keys under **Settings > General** and
-check the live pages. The installer does not exercise the full production
+check the live pages. For the move from CPT UI to theme-owned post types, follow
+[the CPT UI handoff and cleanup guide](cptui-migration.md) after deployment.
+The installer does not exercise the full production
 theme/plugins or perform an HTTP health check. File replacement is not atomic
 and there is no automatic rollback. To restore a known-good code version,
 revert the relevant change on `main` and push again; database settings remain.
